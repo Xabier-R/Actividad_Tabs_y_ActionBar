@@ -15,7 +15,8 @@
         android:orderInCategory="100"
         app:showAsAction="ifRoom" />
 
-    <item android:id="@+id/action_Llamar"
+
+    <item android:id="@+id/action_otros"
         android:title="@string/action_buscar"
         android:icon="@drawable/ic_llamada"
         android:orderInCategory="100"

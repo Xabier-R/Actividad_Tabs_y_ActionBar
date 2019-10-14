@@ -22,9 +22,10 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
 
 
         Resources res = getResources();
@@ -33,7 +34,6 @@ public class MainActivity extends AppCompatActivity {
         TabHost.TabSpec spec=tabs.newTabSpec("mitab1");
         spec.setContent(R.id.Llamadas);
         spec.setIndicator("Llamadas",res.getDrawable(android.R.drawable.ic_dialog_map));
-        Intent inboxIntent = new Intent(this, Llamadas.class);
         tabs.addTab(spec);
         spec=tabs.newTabSpec("mitab2");
         spec.setContent(R.id.Chats);
@@ -46,7 +46,17 @@ public class MainActivity extends AppCompatActivity {
         tabs.setCurrentTab(0);
 
 
+        tabs.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
+                if(toolbar.getTitle().equals("Chat"))
+                {
+                    MenuItem menuItem = (MenuItem) findViewById(R.id.action_otros);
+                    menuItem.setIcon(getResources().getDrawable(R.drawable.ic_chat));
+                }
+            }
+        });
     }
 
 
