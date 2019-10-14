@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Actividad_Tabs_y_ActionBar</string>
+    <string name="titulo">Whatsapp</string>
+    <string name="action_settings">Settings</string>
+    <string name="action_buscar">Buscar</string>
+    action_buscar
+</resources>
