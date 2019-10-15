@@ -2,6 +2,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="com.example.actividad_tabs_y_actionbar.MainActivity">
+
     <item
         android:id="@+id/action_settings"
         android:orderInCategory="100"
@@ -12,14 +13,14 @@
     <item android:id="@+id/action_buscar"
         android:title="@string/action_buscar"
         android:icon="@drawable/ic_buscar"
-        android:orderInCategory="100"
+        android:orderInCategory="101"
         app:showAsAction="ifRoom" />
 
 
     <item android:id="@+id/action_otros"
         android:title="@string/action_buscar"
-        android:icon="@drawable/ic_llamada"
-        android:orderInCategory="100"
+        android:icon="@drawable/ic_chat"
+        android:orderInCategory="101"
         app:showAsAction="ifRoom" />
 
 </menu>

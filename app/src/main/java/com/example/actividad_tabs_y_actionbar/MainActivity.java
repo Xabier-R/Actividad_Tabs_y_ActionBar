@@ -1,72 +1,96 @@
 package com.example.actividad_tabs_y_actionbar;
 
-import android.content.Intent;
+import android.content.ClipData;
 import android.content.res.Resources;
 import android.os.Bundle;
-
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
-
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.content.ContextCompat;
 
 import android.util.Log;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TabHost;
+import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
+    private TextView textView1;
+    private Menu menu;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
 
-        Toolbar toolbar = findViewById(R.id.toolbar);
+        final Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        textView1 = findViewById(R.id.textView1);
+        menu = findViewById(R.id.action_otros);
+
 
 
         Resources res = getResources();
-        TabHost tabs=(TabHost)findViewById(android.R.id.tabhost);
+        TabHost tabs=findViewById(android.R.id.tabhost);
         tabs.setup();
-        TabHost.TabSpec spec=tabs.newTabSpec("mitab1");
+
+
+        TabHost.TabSpec spec=tabs.newTabSpec("tabChats");
         spec.setContent(R.id.Llamadas);
-        spec.setIndicator("Llamadas",res.getDrawable(android.R.drawable.ic_dialog_map));
+        spec.setIndicator("Chats");
         tabs.addTab(spec);
-        spec=tabs.newTabSpec("mitab2");
+        spec=tabs.newTabSpec("tabContactos");
         spec.setContent(R.id.Chats);
-        spec.setIndicator("Chats",res.getDrawable(android.R.drawable.ic_dialog_map));
+        spec.setIndicator("Contactos");
         tabs.addTab(spec);
-        spec=tabs.newTabSpec("mitab3");
+        spec=tabs.newTabSpec("tabLlamadas");
         spec.setContent(R.id.Contactos);
-        spec.setIndicator("Contactos",res.getDrawable(android.R.drawable.ic_dialog_map));
+        spec.setIndicator("LLamadas");
         tabs.addTab(spec);
         tabs.setCurrentTab(0);
 
 
-        tabs.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
 
-                if(toolbar.getTitle().equals("Chat"))
+        tabs.setOnTabChangedListener(new TabHost.OnTabChangeListener() {
+            @Override
+            public void onTabChanged(String tabId) {
+
+                if(tabId.equals("tabChats"))
                 {
-                    MenuItem menuItem = (MenuItem) findViewById(R.id.action_otros);
-                    menuItem.setIcon(getResources().getDrawable(R.drawable.ic_chat));
+                    menu.getItem(2).setIcon(getDrawable(R.drawable.ic_chat));
+
                 }
+
+                if(tabId.equals("tabContactos"))
+                {
+                    menu.getItem(2).setIcon(getDrawable(R.drawable.ic_contactos));
+
+                }
+
+                if(tabId.equals("tabLlamadas"))
+                {
+                    menu.getItem(2).setIcon(getDrawable(R.drawable.ic_llamada));
+
+                }
+
             }
         });
     }
 
 
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
+
         getMenuInflater().inflate(R.menu.menu_main, menu);
+        this.menu = menu;
         return true;
     }
 
+
+    //MIRAR PARA QUE SIRVE
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
