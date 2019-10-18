@@ -1,23 +1,25 @@
 package com.example.actividad_tabs_y_actionbar;
 
-import android.content.ClipData;
+
 import android.content.res.Resources;
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import androidx.core.content.ContextCompat;
-
-import android.util.Log;
-import android.view.View;
 import android.view.Menu;
-import android.view.MenuItem;
+import android.widget.ListView;
 import android.widget.TabHost;
-import android.widget.TextView;
+
 
 public class MainActivity extends AppCompatActivity {
 
-    private TextView textView1;
     private Menu menu;
+    private ListView listaLLamadas,listaChats,listaContactos;
+
+    private Contactos[] contactos = new Contactos[]{new Contactos("Juan", "Disponible", 63254598, "juan"),
+            new Contactos("Pepe", "Ocupado", 698452120, "pepe"), new Contactos("Antonio", "Comiendo", 62541578, "antonio")};
+
+    private Llamadas[] llamadas = new Llamadas[]{new Llamadas(contactos[0], "14:25", "reci"),
+            new Llamadas(contactos[1], "08:41", "envi"), new Llamadas(contactos[2], "18:11", "envi")};
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,7 +29,10 @@ public class MainActivity extends AppCompatActivity {
         final Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        textView1 = findViewById(R.id.textView1);
+
+        listaChats = findViewById(R.id.listViewCh);
+        listaContactos = findViewById(R.id.listViewCon);
+
         menu = findViewById(R.id.action_otros);
 
 
@@ -36,17 +41,35 @@ public class MainActivity extends AppCompatActivity {
         TabHost tabs=findViewById(android.R.id.tabhost);
         tabs.setup();
 
-
         TabHost.TabSpec spec=tabs.newTabSpec("tabChats");
-        spec.setContent(R.id.Llamadas);
+
+
+
+        spec.setContent(R.id.Chats);
         spec.setIndicator("Chats");
         tabs.addTab(spec);
+
+
+
         spec=tabs.newTabSpec("tabContactos");
-        spec.setContent(R.id.Chats);
+
+
+
+        spec.setContent(R.id.Contactos);
         spec.setIndicator("Contactos");
         tabs.addTab(spec);
+
+
+
         spec=tabs.newTabSpec("tabLlamadas");
-        spec.setContent(R.id.Contactos);
+
+        listaLLamadas = findViewById(R.id.listViewLl);
+        AdaptadorLlamadas adaptadorLlamadas = new AdaptadorLlamadas(this,llamadas);
+
+        listaLLamadas.setAdapter(adaptadorLlamadas);
+
+
+        spec.setContent(R.id.listViewLl);
         spec.setIndicator("LLamadas");
         tabs.addTab(spec);
         tabs.setCurrentTab(0);
@@ -89,20 +112,4 @@ public class MainActivity extends AppCompatActivity {
         return true;
     }
 
-
-    //MIRAR PARA QUE SIRVE
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
 }

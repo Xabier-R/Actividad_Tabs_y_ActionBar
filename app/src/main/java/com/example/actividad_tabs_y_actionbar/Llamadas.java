@@ -4,11 +4,41 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-public class Llamadas extends AppCompatActivity {
+public class Llamadas {
+    private Contactos contacto;
+    private String hora;
+    private String direccion;
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_llamadas);
+
+    public Llamadas(Contactos contacto, String hora, String direccion) {
+        this.contacto = contacto;
+        this.hora = hora;
+        this.direccion = direccion;
+    }
+
+
+    public Contactos getContacto() {
+        return contacto;
+    }
+
+    public void setContacto(Contactos contacto) {
+        this.contacto = contacto;
+    }
+
+    public String getHora() {
+        return hora;
+    }
+
+    public void setHora(String hora) {
+        this.hora = hora;
+    }
+
+    public String getDireccion() {
+        return direccion;
+    }
+
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
     }
 }
+
