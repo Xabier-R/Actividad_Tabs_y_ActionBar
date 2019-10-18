@@ -18,8 +18,8 @@ public class MainActivity extends AppCompatActivity {
     private Contactos[] contactos = new Contactos[]{new Contactos("Juan", "Disponible", 63254598, "juan"),
             new Contactos("Pepe", "Ocupado", 698452120, "pepe"), new Contactos("Antonio", "Comiendo", 62541578, "antonio")};
 
-    private Llamadas[] llamadas = new Llamadas[]{new Llamadas(contactos[0], "14:25", "reci"),
-            new Llamadas(contactos[1], "08:41", "envi"), new Llamadas(contactos[2], "18:11", "envi")};
+    private Llamadas[] llamadas = new Llamadas[]{new Llamadas(contactos[0], "14:25", "ic_call_received"),
+            new Llamadas(contactos[1], "08:41", "ic_call_received"), new Llamadas(contactos[2], "18:11", "ic_call_made")};
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,8 +30,7 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
 
-        listaChats = findViewById(R.id.listViewCh);
-        listaContactos = findViewById(R.id.listViewCon);
+        listaChats = findViewById(R.id.listViewCha);
 
         menu = findViewById(R.id.action_otros);
 
@@ -52,10 +51,12 @@ public class MainActivity extends AppCompatActivity {
 
 
         spec=tabs.newTabSpec("tabContactos");
+        listaContactos = findViewById(R.id.listViewCon);
+        AdaptadorContactos adaptadorContactos = new AdaptadorContactos(this,contactos);
 
+        listaContactos.setAdapter(adaptadorContactos);
 
-
-        spec.setContent(R.id.Contactos);
+        spec.setContent(R.id.listViewCon);
         spec.setIndicator("Contactos");
         tabs.addTab(spec);
 

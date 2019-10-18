@@ -6,44 +6,46 @@
     android:layout_height="match_parent"
     android:layout_margin="10sp">
 
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"/>
+
     <TextView
         android:id="@+id/TextViewNombre"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
+        android:layout_marginStart="20dp"
         android:layout_marginTop="10dp"
+        android:layout_toRightOf="@+id/imageView"
         android:text="TextView"
         android:textSize="20dp" />
+
+    <TextView
+        android:id="@+id/TextViewEstado"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="150dp"
+        android:layout_marginTop="10dp"
+        android:layout_toRightOf="@+id/imageView"
+        android:text="TextView"
+        android:textSize="17dp" />
+
+
 
     <TextView
         android:id="@+id/TextViewNum"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/TextViewNombre"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginStart="20dp"
+        android:layout_toRightOf="@+id/imageView"
         android:text="TextView"
-        android:textSize="15dp" />
+        android:textSize="10dp" />
 
 
-
-    <TextView
-        android:id="@+id/TextViewHora"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="200dp"
-        android:layout_marginTop="20dp"
-        android:text="TextView"
-        android:textSize="15dp" />
-
-
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="10dp"
-        android:layout_alignParentRight="true"/>
 
 
 </RelativeLayout>
