@@ -1,9 +1,6 @@
  package com.example.actividad_tabs_y_actionbar;
 
 import android.content.Context;
-
-import android.graphics.drawable.Icon;
-import android.hardware.camera2.params.InputConfiguration;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -43,10 +40,12 @@ public class AdaptadorLlamadas extends ArrayAdapter<Llamadas> {
         tvNomweb.setText(contactos.getNombre());
         TextViewNum.setText(contactos.getNumero()+"");
         TextViewHora.setText(llamadas[position].getHora());
-        String imag = llamadas[position].getDireccion();
-        //image.setImageResource(getResources().getIdentifier(imag, "drawable", getPackageName()));
+
+        image.setImageResource(llamadas[position].getIDDireccion());
         return item;
     }
+
+
 
 }
 

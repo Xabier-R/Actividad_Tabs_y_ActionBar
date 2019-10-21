@@ -5,16 +5,16 @@ public class Contactos {
     private String nombre;
     private String estado;
     private int numero;
-    private String foto;
+    private int IDfoto;
 
 
 
-    public Contactos(String nombre, String estado, int numero, String foto)
+    public Contactos(String nombre, String estado, int numero, int foto)
     {
         this.nombre=nombre;
         this.estado=estado;
         this.numero=numero;
-        this.foto=foto;
+        this.IDfoto=foto;
 
 
     }
@@ -44,11 +44,11 @@ public class Contactos {
         this.numero = numero;
     }
 
-    public String getFoto() {
-        return foto;
+    public int getFoto() {
+        return IDfoto;
     }
 
-    public void setFoto(String foto) {
-        this.foto = foto;
+    public void setFoto(int foto) {
+        this.IDfoto = foto;
     }
 }

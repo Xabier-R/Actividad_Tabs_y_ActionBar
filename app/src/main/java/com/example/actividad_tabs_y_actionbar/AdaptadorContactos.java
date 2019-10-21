@@ -39,8 +39,7 @@ public class AdaptadorContactos  extends ArrayAdapter<Contactos>{
         tvNomweb.setText(contactos[position].getNombre());
         tvEstado.setText(contactos[position].getEstado());
         TextViewNum.setText(contactos[position].getNumero()+"");
-        String imag = contactos[position].getFoto();
-        //image.setImageResource(getResources().getIdentifier(imag, "drawable", getPackageName()));
+        image.setImageResource(contactos[position].getFoto());
         return item;
     }
 

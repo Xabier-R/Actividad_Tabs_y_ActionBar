@@ -7,13 +7,13 @@ import android.os.Bundle;
 public class Llamadas {
     private Contactos contacto;
     private String hora;
-    private String direccion;
+    private int IDdireccion;
 
 
-    public Llamadas(Contactos contacto, String hora, String direccion) {
+    public Llamadas(Contactos contacto, String hora, int direccion) {
         this.contacto = contacto;
         this.hora = hora;
-        this.direccion = direccion;
+        this.IDdireccion = direccion;
     }
 
 
@@ -33,12 +33,12 @@ public class Llamadas {
         this.hora = hora;
     }
 
-    public String getDireccion() {
-        return direccion;
+    public int getIDDireccion() {
+        return IDdireccion;
     }
 
-    public void setDireccion(String direccion) {
-        this.direccion = direccion;
+    public void setIDDireccion(int direccion) {
+        this.IDdireccion = direccion;
     }
 }
 

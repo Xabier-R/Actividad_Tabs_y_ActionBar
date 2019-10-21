@@ -15,11 +15,14 @@ public class MainActivity extends AppCompatActivity {
     private Menu menu;
     private ListView listaLLamadas,listaChats,listaContactos;
 
-    private Contactos[] contactos = new Contactos[]{new Contactos("Juan", "Disponible", 63254598, "juan"),
-            new Contactos("Pepe", "Ocupado", 698452120, "pepe"), new Contactos("Antonio", "Comiendo", 62541578, "antonio")};
+    private Contactos[] contactos = new Contactos[]{new Contactos("Juan", "Disponible", 63254598, R.drawable.juan),
+            new Contactos("Pepe", "Ocupado", 698452120, R.drawable.pepe), new Contactos("Mario", "Comiendo...", 62541578, R.drawable.mario)};
 
-    private Llamadas[] llamadas = new Llamadas[]{new Llamadas(contactos[0], "14:25", "ic_call_received"),
-            new Llamadas(contactos[1], "08:41", "ic_call_received"), new Llamadas(contactos[2], "18:11", "ic_call_made")};
+    private Llamadas[] llamadas = new Llamadas[]{new Llamadas(contactos[0], "14:25", R.drawable.ic_call_received),
+            new Llamadas(contactos[1], "08:41", R.drawable.ic_call_received), new Llamadas(contactos[2], "18:11", R.drawable.ic_call_made)};
+
+    private Chats[] chats = new Chats[]{new Chats("DM2", "Programando!!!", R.drawable.dm2),new Chats("Mario", "Comiendo...", R.drawable.mario)};
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
 
-        listaChats = findViewById(R.id.listViewCha);
+
 
         menu = findViewById(R.id.action_otros);
 
@@ -41,8 +44,9 @@ public class MainActivity extends AppCompatActivity {
         tabs.setup();
 
         TabHost.TabSpec spec=tabs.newTabSpec("tabChats");
-
-
+        listaChats = findViewById(R.id.listViewCha);
+        AdaptadorChats adaptadorchat = new AdaptadorChats(this,chats);
+        listaChats.setAdapter(adaptadorchat);
 
         spec.setContent(R.id.Chats);
         spec.setIndicator("Chats");
